@@ -14,9 +14,7 @@ const EndsleighCourt = () => {
     '/Endsleigh-01.jpg',
     '/Endsleigh-02.jpg', 
     '/Endsleigh-03.jpg',
-    '/Endsleigh-04.jpg',
-    '/Endsleigh-05.jpg',
-    '/Endsleigh-06.jpg'
+    '/Endsleigh-04.jpg'
   ];
 
   const features = [
@@ -68,7 +66,7 @@ const EndsleighCourt = () => {
             >
               <div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-gray-900 dark:text-white mb-6 font-['Inter']">
-                  Endsleigh <span className="text-[#349bff]">Court</span>
+                  Endsleigh Court
                 </h1>
                 <div className="flex items-center text-gray-600 dark:text-gray-400 text-lg mb-6">
                   <MapPin className="w-6 h-6 mr-3 text-[#349bff]" />

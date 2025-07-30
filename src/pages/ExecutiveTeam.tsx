@@ -12,7 +12,7 @@ const ExecutiveTeam = () => {
       id: 1,
       name: 'James Southgate',
       position: 'Chief Financial Officer & Company Secretary',
-      bio: 'James is the Chief Financial Officer and joint Company Secretary of the Freshwater Group. His main areas of responsibility are finance, treasury, IT, M&A, pension and tax strategy. He joined the Freshwater Group in 2015 after a 25 year career at PricewterhouseCoopers where he was an Assurance partner. He led many listed company audits including National Grid, ARM and British Steel and listed transactions including IPOs and Class 1 acquisitions. James is currently a Non-executive Director and Audit Committee Chairman of S P Jain London, a newly formed UK university specialising in business qualifications. Previously he was a member of the Audit Committee of the University of West London for 9 years and they awarded him an honorary doctorate in Business Administration.',
+      bio: 'James is the Chief Financial Officer and joint Company Secretary of the Freshwater Group. His main areas of responsibility are finance, treasury, IT, M&A, pension and tax strategy. He joined the Freshwater Group in 2015 after a 25 year career at PricewterhouseCoopers where he was an Assurance partner. He led many listed company audits including National Grid, ARM and British Steel and listed transactions including IPOs and Class 1 acquisitions.\n\nJames is currently a Non-executive Director and Audit Committee Chairman of S P Jain London, a newly formed UK university specialising in business qualifications. Previously he was a member of the Audit Committee of the University of West London for 9 years and they awarded him an honorary doctorate in Business Administration.',
       shortBio: 'James is the Chief Financial Officer and joint Company Secretary of the Freshwater Group. His main areas of responsibility are finance, treasury, IT, M&A, pension and tax strategy. He joined the Freshwater Group in 2015 after a 25 year career at PricewterhouseCoopers where he was an Assurance partner.',
       experience: '25+ years',
       department: 'Finance'
@@ -21,7 +21,7 @@ const ExecutiveTeam = () => {
       id: 2,
       name: 'Jonathan Ainsley',
       position: 'Director of Property',
-      bio: 'Jonathan is the Director of Property, responsible for the performance of the Residential and Commercial assets held by the Freshwater Group. With over 30 years experience in the market, Jonathan has a wide range of responsibilities including, the strategic leadership of Development, Asset Management, Leasing and financial performance of the residential and commercial assets. Leading a team of professionals across both asset classes, Jonathan has been with Freshwater since 2020. Prior to joining Freshwater, he was at Battersea Power Station Development Company, CSC, Hammerson and JLL. Jonathan is a member of the RICS.',
+      bio: 'Jonathan is the Director of Property, responsible for the performance of the Residential and Commercial assets held by the Freshwater Group. With over 30 years experience in the market, Jonathan has a wide range of responsibilities including, the strategic leadership of Development, Asset Management, Leasing and financial performance of the residential and commercial assets. Leading a team of professionals across both asset classes, Jonathan has been with Freshwater since 2020.\n\nPrior to joining Freshwater, he was at Battersea Power Station Development Company, CSC, Hammerson and JLL. Jonathan is a member of the RICS.',
       shortBio: 'Jonathan is the Director of Property, responsible for the performance of the Residential and Commercial assets held by the Freshwater Group. With over 30 years experience in the market, Jonathan has a wide range of responsibilities including strategic leadership of Development, Asset Management, and Leasing.',
       experience: '30+ years',
       department: 'Property'
@@ -30,20 +30,14 @@ const ExecutiveTeam = () => {
       id: 3,
       name: 'Martin Bale',
       position: 'Group General Counsel & Company Secretary',
-      bio: 'Martin heads the in-house legal team which provides legal services, advice and support to the companies within the Freshwater Group, their directors and shareholders. In addition, he is the focal point for the extensive panel of external legal firms that represent the Freshwater Group in legal matters. As part of the Freshwater Group\'s Executive Team, Martin is involved in many areas of the Freshwater Group\'s activities, its development schemes and strategic affairs, providing a link to the board as executive personal assistant to the Chairman. Martin was admitted as a Solicitor in 1982 and prior to joining the Freshwater Group in 2014 had been a partner in a Mayfair firm for 24 years, specialising in litigation and dispute resolution where he acted for Freshwater Group in a wide range of matters for 15 years.',
+      bio: 'Martin heads the in-house legal team which provides legal services, advice and support to the companies within the Freshwater Group, their directors and shareholders. In addition, he is the focal point for the extensive panel of external legal firms that represent the Freshwater Group in legal matters. As part of the Freshwater Group\'s Executive Team, Martin is involved in many areas of the Freshwater Group\'s activities, its development schemes and strategic affairs, providing a link to the board as executive personal assistant to the Chairman.\n\nMartin was admitted as a Solicitor in 1982 and prior to joining the Freshwater Group in 2014 had been a partner in a Mayfair firm for 24 years, specialising in litigation and dispute resolution where he acted for Freshwater Group in a wide range of matters for 15 years.',
       shortBio: 'Martin heads the in-house legal team which provides legal services, advice and support to the companies within the Freshwater Group, their directors and shareholders. He is the focal point for the extensive panel of external legal firms that represent the Freshwater Group in legal matters.',
       experience: '40+ years',
       department: 'Legal'
     }
   ];
 
-  // Quick navigation
-  const scrollToExecutive = (index: number) => {
-    const element = document.getElementById(`executive-${index}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+
 
   const toggleBio = (id: number) => {
     setExpandedBio(expandedBio === id ? null : id);
@@ -51,24 +45,7 @@ const ExecutiveTeam = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 font-['Inter',sans-serif]">
-      {/* Floating Navigation */}
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"
-      >
-        <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-3 shadow-lg border border-gray-200 dark:border-slate-700">
-          {executives.map((executive, index) => (
-            <button
-              key={executive.id}
-              onClick={() => scrollToExecutive(index)}
-              className="block w-3 h-3 mb-3 last:mb-0 bg-gray-300 dark:bg-slate-600 hover:bg-emerald-500 dark:hover:bg-emerald-400 transition-colors duration-200"
-              title={executive.name}
-            />
-          ))}
-        </div>
-      </motion.div>
+
 
       {/* Hero Section with Dynamic Background */}
       <motion.section
@@ -169,18 +146,22 @@ const ExecutiveTeam = () => {
                   </div>
 
                   <div className="prose prose-lg max-w-none">
-                    <motion.p
+                    <motion.div
                       className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-justify"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
                       viewport={{ once: true }}
                     >
-                      {expandedBio === executive.id || window.innerWidth >= 768
+                      {(expandedBio === executive.id || window.innerWidth >= 768
                         ? executive.bio
                         : executive.shortBio
-                      }
-                    </motion.p>
+                      ).split('\n\n').map((paragraph, idx) => (
+                        <p key={idx} className={idx > 0 ? 'mt-4' : ''}>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </motion.div>
 
                     {/* Mobile Read More Toggle */}
                     <div className="md:hidden mt-4">

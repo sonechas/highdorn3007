@@ -12,7 +12,7 @@ const ManagementTeam = () => {
       id: 1,
       name: 'Grant Barrell',
       position: 'Head of Operational Finance',
-      bio: 'Grant is the Head of Operational Finance. His main responsibility is to oversee the management of all aspects of accounts receivable, accounts payable and service charges. He joined the group in April 2018, having been involved within the property industry, focusing on block management and account compliance, since arriving from South Africa at the beginning of 2007. Grant completed his Master of Business Administration whilst in South Africa and is currently a member of The Property Institute and an associate of RICS.',
+      bio: 'Grant is the Head of Operational Finance. His main responsibility is to oversee the management of all aspects of accounts receivable, accounts payable and service charges. He joined the group in April 2018, having been involved within the property industry, focusing on block management and account compliance, since arriving from South Africa at the beginning of 2007.\n\nGrant completed his Master of Business Administration whilst in South Africa and is currently a member of The Property Institute and an associate of RICS.',
       shortBio: 'Grant is the Head of Operational Finance. His main responsibility is to oversee the management of all aspects of accounts receivable, accounts payable and service charges. He joined the group in April 2018, having been involved within the property industry since 2007.',
       specialization: 'Operational Finance',
       location: 'Head Office',
@@ -22,7 +22,7 @@ const ManagementTeam = () => {
       id: 2,
       name: 'Mike McCarthy',
       position: 'Manager Commercial Property',
-      bio: 'Mike has over 30 years of property experience and currently has operational responsibility for property and asset management of the commercial portfolio. He has been part of the development management team for various schemes including office to residential projects, retail warehousing and development of Central London offices. Mike is a Chartered Surveyor and formerly worked at Hamptons and Dorrington PLC',
+      bio: 'Mike has over 30 years of property experience and currently has operational responsibility for property and asset management of the commercial portfolio. He has been part of the development management team for various schemes including office to residential projects, retail warehousing and development of Central London offices.\n\nMike is a Chartered Surveyor and formerly worked at Hamptons and Dorrington PLC',
       shortBio: 'Mike has over 30 years of property experience and currently has operational responsibility for property and asset management of the commercial portfolio. He has been part of the development management team for various schemes.',
       specialization: 'Commercial Property & Asset Management',
       location: 'London Wide',
@@ -32,7 +32,7 @@ const ManagementTeam = () => {
       id: 3,
       name: 'Kalpesh Sonecha',
       position: 'Head of Information Technology',
-      bio: 'Kalpesh is our Head of IT, responsible for leading and overseeing all aspects of Freshwater\'s information technology operations. With over 25 years of experience in the IT sector, he brings a wealth of expertise, from hands-on support to strategic decision-making. Kalpesh\'s primary focus is to develop and implement IT strategies that align with our business objectives, ensuring that our systems, networks, and digital services are secure, reliable, and efficient. He joined Freshwater in 2022, following a distinguished 21-year career at the National Housing Federation.',
+      bio: 'Kalpesh is our Head of IT, responsible for leading and overseeing all aspects of Freshwater\'s information technology operations. With over 25 years of experience in the IT sector, he brings a wealth of expertise, from hands-on support to strategic decision-making.\n\nKalpesh\'s primary focus is to develop and implement IT strategies that align with our business objectives, ensuring that our systems, networks, and digital services are secure, reliable, and efficient. He joined Freshwater in 2022, following a distinguished 21-year career at the National Housing Federation.',
       shortBio: 'Kalpesh is our Head of IT, responsible for leading and overseeing all aspects of Freshwater\'s information technology operations. With over 25 years of experience in the IT sector, he brings a wealth of expertise from hands-on support to strategic decision-making.',
       specialization: 'Information Technology',
       location: 'Head Office',
@@ -42,7 +42,7 @@ const ManagementTeam = () => {
       id: 4,
       name: 'Sarah Tate',
       position: 'Deputy General Counsel',
-      bio: 'Sarah is the Deputy General Counsel, qualifying as a solicitor in 2012 after 12 years as a paralegal. Her main duties are dealing with transactional property, litigation, finance, corporate and banking matters as well as managing and coordinating external law firms and assisting the finance and property departments in all aspects of the business. Sarah joined the Freshwater Group in November 2021, previously having dealt with the Freshwater Group\'s work as an external solicitor since 2017. Prior to that Sarah worked in the city as a real estate solicitor acting for large institutional landlords including British Land, the Crown Estate and the Wellcome Trust. Sarah is a trustee of West Harrow Community Forum Trust, a trust created to maintain and enhance the character of the area. She is also an active member of the West Harrow tube gardening group and Harrow Litter Pickers Charity.',
+      bio: 'Sarah is the Deputy General Counsel, qualifying as a solicitor in 2012 after 12 years as a paralegal. Her main duties are dealing with transactional property, litigation, finance, corporate and banking matters as well as managing and coordinating external law firms and assisting the finance and property departments in all aspects of the business. Sarah joined the Freshwater Group in November 2021, previously having dealt with the Freshwater Group\'s work as an external solicitor since 2017. Prior to that Sarah worked in the city as a real estate solicitor acting for large institutional landlords including British Land, the Crown Estate and the Wellcome Trust.\n\nSarah is a trustee of West Harrow Community Forum Trust, a trust created to maintain and enhance the character of the area. She is also an active member of the West Harrow tube gardening group and Harrow Litter Pickers Charity.',
       shortBio: 'Sarah is the Deputy General Counsel, qualifying as a solicitor in 2012 after 12 years as a paralegal. Her main duties are dealing with transactional property, litigation, finance, corporate and banking matters as well as managing external law firms.',
       specialization: 'Legal & Property Transactions',
       location: 'Head Office',
@@ -50,13 +50,7 @@ const ManagementTeam = () => {
     }
   ];
 
-  // Quick navigation
-  const scrollToManager = (index: number) => {
-    const element = document.getElementById(`manager-${index}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+
 
   const toggleBio = (id: number) => {
     setExpandedBio(expandedBio === id ? null : id);
@@ -64,24 +58,7 @@ const ManagementTeam = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 font-['Inter',sans-serif]">
-      {/* Floating Navigation */}
-      <motion.div 
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"
-      >
-        <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-3 shadow-lg border border-gray-200 dark:border-slate-700">
-          {managers.map((manager, index) => (
-            <button
-              key={manager.id}
-              onClick={() => scrollToManager(index)}
-              className="block w-3 h-3 mb-3 last:mb-0 bg-gray-300 dark:bg-slate-600 hover:bg-purple-500 dark:hover:bg-purple-400 transition-colors duration-200"
-              title={manager.name}
-            />
-          ))}
-        </div>
-      </motion.div>
+
 
       {/* Hero Section with Dynamic Background */}
       <motion.section 
@@ -185,18 +162,22 @@ const ManagementTeam = () => {
                   </div>
 
                   <div className="prose prose-lg max-w-none">
-                    <motion.p 
+                    <motion.div 
                       className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-justify"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
                       viewport={{ once: true }}
                     >
-                      {expandedBio === manager.id || window.innerWidth >= 768 
+                      {(expandedBio === manager.id || window.innerWidth >= 768 
                         ? manager.bio 
                         : manager.shortBio
-                      }
-                    </motion.p>
+                      ).split('\n\n').map((paragraph, idx) => (
+                        <p key={idx} className={idx > 0 ? 'mt-4' : ''}>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </motion.div>
 
                     {/* Mobile Read More Toggle */}
                     <div className="md:hidden mt-4">

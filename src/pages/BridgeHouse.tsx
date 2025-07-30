@@ -1,179 +1,223 @@
-import { useRef, useEffect } from 'react';
-import { Building2, MapPin, Users2, ArrowLeft, Phone, Mail, Calendar, Car } from 'lucide-react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { useEffect } from 'react';
+import { Building2, MapPin, Users2, ArrowLeft, Car } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 const BridgeHouse = () => {
   const navigate = useNavigate();
 
-  // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const property = {
-    title: 'Bridge House',
-    location: 'London Road, Twickenham, TW1 3QL',
-    size: '33,400 sqft',
-    floors: 5,
-    images: ['/Twick-01.jpg', '/Twick-04.jpg', '/Twick-05.jpg', '/Twick-06.jpg'],
-    description: 'A modern five-storey office building offering 33,400 square feet of flexible workspace. Built in the 1970s and extensively refurbished, this property features dedicated car parking and is currently home to Haymarket Media Group, demonstrating its appeal to leading businesses.',
-    features: ['Car Parking', 'Modern Facilities', 'Flexible Workspace', 'Established Tenant'],
-    highlights: ['On-site Parking', 'Flexible Floor Plates', 'Riverside Location', 'Media Hub'],
-    details: {
-      yearBuilt: '1970s',
-      refurbished: 'Recently',
-      tenant: 'Haymarket Media Group',
-      parking: 'On-site car parking available',
-      transport: 'Twickenham Station (0.5 miles), Richmond (2 miles)',
-      amenities: ['Dedicated Car Parking', 'Flexible Floor Plates', 'Modern Facilities', 'Riverside Views']
-    }
-  };
+  const propertyImages = [
+    '/Twick-01.jpg',
+    '/Twick-04.jpg', 
+    '/Twick-05.jpg',
+    '/Twick-06.jpg'
+  ];
 
-  const useScrollAnimation = () => {
-    const controls = useAnimation();
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true, amount: 0.2 });
-    
-    useEffect(() => {
-      if (inView) {
-        controls.start('visible');
-      }
-    }, [controls, inView]);
-    
-    return { ref, controls };
-  };
+  const features = [
+    { icon: Building2, title: '33,400 sqft Total', description: 'Flexible office workspace' },
+    { icon: Car, title: 'On-site Parking', description: 'Dedicated car parking available' },
+    { icon: Users2, title: '5 Floors', description: 'Modern multi-level building' },
+    { icon: MapPin, title: 'Twickenham Location', description: 'Riverside business district' }
+  ];
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-  };
-
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.6 } }
-  };
-
-  const heroAnimation = useScrollAnimation();
-  const detailsAnimation = useScrollAnimation();
+  const highlights = [
+    'On-site Parking',
+    'Flexible Floor Plates', 
+    'Riverside Location',
+    'Media Hub',
+    'Modern Facilities',
+    '1970s Architecture',
+    'Recently Refurbished',
+    'Established Tenant'
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:bg-gradient-to-br dark:from-navy-900 dark:via-navy-800 dark:to-navy-700">
+    <div className="min-h-screen bg-white dark:bg-navy-900">
       {/* Hero Section */}
-      <section className="relative h-screen overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src={property.images[0]} 
-            alt={property.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/50 dark:bg-black/70"></div>
+      <section className="relative min-h-screen flex items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:bg-gradient-to-br dark:from-navy-900 dark:via-navy-800 dark:to-navy-700">
+        <div className="absolute inset-0 opacity-5 dark:opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23349bff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
         </div>
-        
-        <div className="relative z-10 h-full flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            onClick={() => navigate('/office')}
+            className="mb-8 flex items-center gap-2 text-[#349bff] hover:text-[#2980e6] transition-colors duration-300 font-medium"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Back to Office Properties
+          </motion.button>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              ref={heroAnimation.ref}
-              initial="hidden"
-              animate={heroAnimation.controls}
-              variants={fadeInUp}
-              className="text-white"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-8"
             >
-              <button 
-                onClick={() => navigate('/office')}
-                className="flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors duration-300"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                Back to Office Properties
-              </button>
-              
-              <h1 className="text-6xl md:text-7xl font-black mb-6 font-['Inter']">
-                {property.title}
-              </h1>
-              
-              <div className="flex items-center gap-3 text-xl mb-8">
-                <MapPin className="w-6 h-6 text-[#349bff]" />
-                <span>{property.location}</span>
+              <div>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-gray-900 dark:text-white mb-6 font-['Inter']">
+                  Bridge House
+                </h1>
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-lg mb-6">
+                  <MapPin className="w-6 h-6 mr-3 text-[#349bff]" />
+                  <span>London Road, Twickenham, TW1 3QL</span>
+                </div>
               </div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-2xl">
-                <div>
-                  <div className="text-3xl font-bold text-[#349bff]">{property.size}</div>
-                  <div className="text-white/80">Total Size</div>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-[#349bff]/10 dark:bg-[#349bff]/20 p-6 border border-[#349bff]/20 dark:border-[#349bff]/30">
+                  <div className="flex items-center gap-3 text-[#349bff] font-semibold mb-2">
+                    <Building2 className="w-6 h-6" />
+                    <span>Total Size</span>
+                  </div>
+                  <p className="text-3xl font-bold text-gray-900 dark:text-white">33,400 sqft</p>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-[#349bff]">{property.floors}</div>
-                  <div className="text-white/80">Floors</div>
+                <div className="bg-[#349bff]/10 dark:bg-[#349bff]/20 p-6 border border-[#349bff]/20 dark:border-[#349bff]/30">
+                  <div className="flex items-center gap-3 text-[#349bff] font-semibold mb-2">
+                    <Users2 className="w-6 h-6" />
+                    <span>Floors</span>
+                  </div>
+                  <p className="text-3xl font-bold text-gray-900 dark:text-white">5</p>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-[#349bff]">{property.details.yearBuilt}</div>
-                  <div className="text-white/80">Built</div>
-                </div>
+              </div>
+
+              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed font-light">
+                A modern five-storey office building offering 33,400 square feet of flexible workspace. Built in the 1970s and extensively refurbished, this property features dedicated car parking and is currently home to Haymarket Media Group, demonstrating its appeal to leading businesses.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative h-[500px] lg:h-[600px] overflow-hidden shadow-2xl">
+                <img
+                  src={propertyImages[0]}
+                  alt="Bridge House"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Property Details */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+      {/* Features Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:bg-gradient-to-br dark:from-navy-800 dark:via-navy-700 dark:to-navy-600">
         <div className="max-w-7xl mx-auto">
           <motion.div
-            ref={detailsAnimation.ref}
-            initial="hidden"
-            animate={detailsAnimation.controls}
-            variants={fadeInUp}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <div className="space-y-8">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white">Property Overview</h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                {property.description}
-              </p>
-              
-              <div className="bg-[#349bff]/10 p-6 rounded-xl border border-[#349bff]/20">
-                <div className="flex items-center gap-3 mb-4">
-                  <Car className="w-6 h-6 text-[#349bff]" />
-                  <h4 className="font-semibold text-[#349bff]">Parking Available</h4>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">{property.details.parking}</p>
-              </div>
-
-              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Current Tenant</h4>
-                <p className="text-lg font-medium text-[#349bff]">{property.details.tenant}</p>
-                <p className="text-gray-600 dark:text-gray-400 mt-2">Leading media and publishing company</p>
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white">Key Features</h4>
-                <div className="grid grid-cols-1 gap-3">
-                  {property.details.amenities.map((amenity, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-[#349bff] rounded-full"></div>
-                      <span className="text-gray-700 dark:text-gray-300">{amenity}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <div className="grid grid-cols-1 gap-4">
-                {property.images.slice(1).map((image, idx) => (
-                  <div key={idx} className="aspect-[16/9] overflow-hidden">
-                    <img 
-                      src={image} 
-                      alt={`${property.title} ${idx + 2}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-6 font-['Inter']">Property Features</h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto font-light">
+              Discover the exceptional amenities and features that make Bridge House a premier office destination
+            </p>
           </motion.div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/50 dark:border-gray-700/50"
+              >
+                <div className="bg-[#349bff] p-3 w-fit mb-4">
+                  <feature.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      {/* Image Gallery */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-navy-900">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-6 font-['Inter']">Property Gallery</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {propertyImages.map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative h-80 overflow-hidden shadow-xl group"
+              >
+                <img
+                  src={image}
+                  alt={`Bridge House ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Highlights Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-rose-50 via-pink-50 to-red-50 dark:bg-gradient-to-br dark:from-navy-900 dark:via-navy-800 dark:to-navy-700">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-6 font-['Inter']">Key Highlights</h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto font-light">
+              Everything you need for successful business operations in Twickenham
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {highlights.map((highlight, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 shadow-md border border-gray-200/50 dark:border-gray-700/50"
+              >
+                <Building2 className="w-5 h-5 text-[#349bff] flex-shrink-0" />
+                <span className="text-gray-700 dark:text-gray-300 font-medium">{highlight}</span>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

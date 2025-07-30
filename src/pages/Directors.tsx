@@ -12,7 +12,7 @@ const Directors = () => {
       id: 1,
       name: 'Benzion Freshwater',
       position: 'Chairman & Managing Director',
-      bio: 'Benzion joined the Freshwater Group in December 1971 with primary responsibility for the Freshwater Group\'s finances. He is a trained accountant and now has over 50 years of experience working in the property industry. In July 1976 he was appointed Managing Director and, additionally, became Chairman in July 1980. Benzion is the son of Osias Freshwater who founded the property business in London\'s East End after World War II having fled from his native Poland in 1939 to escape the holocaust.',
+      bio: 'Benzion joined the Freshwater Group in December 1971 with primary responsibility for the Freshwater Group\'s finances. He is a trained accountant and now has over 50 years of experience working in the property industry. In July 1976 he was appointed Managing Director and, additionally, became Chairman in July 1980.\n\nBenzion is the son of Osias Freshwater who founded the property business in London\'s East End after World War II having fled from his native Poland in 1939 to escape the holocaust.',
       email: 'benzion.freshwater@highdorn.co.uk',
       shortBio: 'Benzion joined the Freshwater Group in December 1971 with primary responsibility for the Freshwater Group\'s finances. He is a trained accountant and now has over 50 years of experience working in the property industry.'
     },
@@ -20,19 +20,13 @@ const Directors = () => {
       id: 2,
       name: 'Solomon Freshwater',
       position: 'Director & Head USA Operations',
-      bio: 'Solomon was appointed to the Board of the main companies in the Freshwater Group in January 1986. He is primarily responsible for the Freshwater Group\'s operations in the USA and also has responsibility for the UK sales division. Solomon is the second son of Osias Freshwater and Benzion\'s brother. He is also a Rabbi in the Jewish Northwest London community.',
+      bio: 'Solomon was appointed to the Board of the main companies in the Freshwater Group in January 1986. He is primarily responsible for the Freshwater Group\'s operations in the USA and also has responsibility for the UK sales division.\n\nSolomon is the second son of Osias Freshwater, who founded the property business in London\'s East End after World War II having fled from his native Poland in 1939 to escape the holocaust and Benzion\'s brother. He is also a Rabbi in the Jewish Northwest London community.',
       email: 'solomon.freshwater@highdorn.co.uk',
       shortBio: 'Solomon was appointed to the Board of the main companies in the Freshwater Group in January 1986. He is primarily responsible for the Freshwater Group\'s operations in the USA and also has responsibility for the UK sales division.'
     }
   ];
 
-  // Quick navigation
-  const scrollToDirector = (index: number) => {
-    const element = document.getElementById(`director-${index}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+
 
   const toggleBio = (id: number) => {
     setExpandedBio(expandedBio === id ? null : id);
@@ -40,24 +34,7 @@ const Directors = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 font-['Inter',sans-serif]">
-      {/* Floating Navigation */}
-      <motion.div 
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block"
-      >
-        <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-3 shadow-lg border border-gray-200 dark:border-slate-700">
-          {directors.map((director, index) => (
-            <button
-              key={director.id}
-              onClick={() => scrollToDirector(index)}
-              className="block w-3 h-3 mb-3 last:mb-0 bg-gray-300 dark:bg-slate-600 hover:bg-blue-500 dark:hover:bg-blue-400 transition-colors duration-200"
-              title={director.name}
-            />
-          ))}
-        </div>
-      </motion.div>
+
 
       {/* Hero Section with Dynamic Background */}
       <motion.section 
@@ -148,18 +125,22 @@ const Directors = () => {
                   </div>
 
                   <div className="prose prose-lg max-w-none">
-                    <motion.p 
+                    <motion.div 
                       className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-justify"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
                       viewport={{ once: true }}
                     >
-                      {expandedBio === director.id || window.innerWidth >= 768 
+                      {(expandedBio === director.id || window.innerWidth >= 768 
                         ? director.bio 
                         : director.shortBio
-                      }
-                    </motion.p>
+                      ).split('\n\n').map((paragraph, idx) => (
+                        <p key={idx} className={idx > 0 ? 'mt-4' : ''}>
+                          {paragraph}
+                        </p>
+                      ))}
+                    </motion.div>
 
                     {/* Mobile Read More Toggle */}
                     <div className="md:hidden mt-4">

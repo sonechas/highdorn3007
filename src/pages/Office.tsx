@@ -128,7 +128,7 @@ const Office = () => {
             >
               <motion.div variants={fadeInUp}>
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight text-gray-900 dark:text-white font-['Inter']">
-                  Office <span className="text-[#349bff]">Properties</span>
+                  Office Properties
                 </h1>
               </motion.div>
 

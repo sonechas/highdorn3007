@@ -68,7 +68,7 @@ const EmpireHouse = () => {
             >
               <div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-gray-900 dark:text-white mb-6 font-['Inter']">
-                  Empire <span className="text-[#349bff]">House</span>
+                  Empire House
                 </h1>
                 <div className="flex items-center text-gray-600 dark:text-gray-400 text-lg mb-6">
                   <MapPin className="w-6 h-6 mr-3 text-[#349bff]" />
