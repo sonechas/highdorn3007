@@ -87,11 +87,36 @@ const About = () => {
               </h2>
               <div className="space-y-6">
                 <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Almost all the properties Highdorn manages are owned by two property investment groups -
-                  Daejan Holdings and Centremanor Group that are also owned and controlled by the Freshwater family.
+                  Almost all the properties Highdorn manages are owned by two property investment groups - 
+                  <a 
+                    href="https://daejanholdings.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold transition-colors duration-200 mx-1"
+                  >
+                    Daejan Holdings
+                  </a>
+                  and 
+                  <a 
+                    href="https://staging.highdorn.co.uk/index.html#" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold transition-colors duration-200 mx-1"
+                  >
+                    Centremanor Group
+                  </a>
+                  that are also owned and controlled by the Freshwater family.
                 </p>
                 <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Colloquially these groups together are known as the Freshwater Group
+                  Colloquially these groups together are known as the 
+                  <a 
+                    href="https://freshwatergroup.co.uk/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold transition-colors duration-200 mx-1"
+                  >
+                    Freshwater Group
+                  </a>
                   although this is not a legal entity.
                 </p>
               </div>
@@ -106,7 +131,7 @@ const About = () => {
                 </div>
                 <div className="flex items-center gap-3 text-blue-500 dark:text-blue-400">
                   <ArrowRight className="w-5 h-5" />
-                  <span className="font-semibold">Investment Services</span>
+                  <span className="font-semibold">Property Services</span>
                 </div>
               </div>
             </motion.div>
