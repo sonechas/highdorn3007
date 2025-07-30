@@ -235,6 +235,54 @@ const Hero = () => {
           </div>
         </motion.div>
 
+        {/* Related Companies Links */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-8 ml-0 lg:ml-8"
+        >
+          <div className="text-gray-300 text-sm font-light tracking-wide uppercase mb-4"
+            style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
+            Related Companies
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
+            <motion.a
+              href="https://daejanholdings.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-white hover:text-blue-300 transition-colors duration-200 text-lg font-medium"
+              style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}
+            >
+              Daejan Holdings
+            </motion.a>
+            <motion.a
+              href="https://staging.highdorn.co.uk/index.html#"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-white hover:text-blue-300 transition-colors duration-200 text-lg font-medium"
+              style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}
+            >
+              Centremanor Group
+            </motion.a>
+            <motion.a
+              href="https://freshwatergroup.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-white hover:text-blue-300 transition-colors duration-200 text-lg font-medium"
+              style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}
+            >
+              Freshwater Group
+            </motion.a>
+          </div>
+        </motion.div>
+
 
       </div>
     </section>
