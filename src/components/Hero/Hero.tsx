@@ -7,12 +7,9 @@ const Hero = () => {
   
   // Array of other homepage images (excluding the default)
   const otherImages = [
-    '/Home Page Images/7.png',
     '/Home Page Images/8.png',
     '/Home Page Images/9.png',
     '/Home Page Images/10.png',
-    '/Home Page Images/12.png',
-    '/Home Page Images/13.png',
     '/Home Page Images/15.png'
   ];
 

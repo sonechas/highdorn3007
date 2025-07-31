@@ -15,7 +15,6 @@ const Footer = () => {
       { name: '2024', href: '/financials-2024' },
       { name: '2023', href: '/financials-2023' },
       { name: '2022', href: '/financials-2022' },
-      { name: 'Pensions', href: '/pensions' },
     ],
     legal: [
       { name: 'Privacy Policy', href: '#privacy' },
@@ -42,15 +41,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center mb-4">
-              <img 
-                src="/Freshwater.png" 
-                alt="Freshwater Group" 
+              <img
+                src="/Freshwater.png"
+                alt="Freshwater Group"
                 className="h-12 w-auto"
               />
             </div>
-            <p className="text-gray-300 mb-4 text-sm leading-relaxed">
-              Premier real estate management with over 25 years of experience in the UK property market.
-            </p>
+
             <div className="space-y-2">
               <div className="flex items-center text-gray-300 text-sm">
                 <PhoneCall className="w-4 h-4 mr-2 text-blue-400" />
