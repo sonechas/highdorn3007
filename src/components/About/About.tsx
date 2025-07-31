@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowRight, Building2, Users2, Award, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -98,7 +97,7 @@ const About = () => {
                   </a>
                   and 
                   <a 
-                    href="https://staging.highdorn.co.uk/index.html#" 
+                    href="http://www.centremanor.co.uk/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold transition-colors duration-200 mx-1"

@@ -10,7 +10,7 @@ const Pensions2020 = () => {
   const pdfDocuments = [
     {
       title: 'Pension Financial Statements July 2020',
-      file: '/pensions/Pension Financial Statements July 22.pdf', // Using 2022 file as placeholder since 2020 file wasn't found
+      file: '/pensions/Pension Financial Statements July 22.pdf',
       category: 'Financial Statements',
       lastUpdated: 'July 2020',
       description: 'Comprehensive pension fund financial statements including assets, liabilities, and performance analysis.'

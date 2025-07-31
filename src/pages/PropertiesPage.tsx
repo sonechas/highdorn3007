@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Properties from '../Properties/Properties';
 
 const PropertiesPage = () => {

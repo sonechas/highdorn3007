@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BedDouble, Bath, Square, MapPin, Filter, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Property } from '../../utils/supabase';

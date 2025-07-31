@@ -55,7 +55,6 @@ const Hero = () => {
         resolve();
       };
       img.onerror = () => {
-        console.warn(`Failed to load image: ${src}`);
         // Still mark as "loaded" to prevent infinite loading
         setLoadedImages(prev => new Set(prev).add(index));
         resolve();
@@ -111,7 +110,6 @@ const Hero = () => {
           Promise.all(remainingPromises);
         }
       } catch (error) {
-        console.error('Error preloading images:', error);
         setIsLoading(false);
       }
     };
@@ -259,7 +257,7 @@ const Hero = () => {
               Daejan Holdings
             </motion.a>
             <motion.a
-              href="https://staging.highdorn.co.uk/index.html#"
+              href="http://www.centremanor.co.uk/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
